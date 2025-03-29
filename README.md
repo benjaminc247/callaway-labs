@@ -1,1 +1,1 @@
-# callaway-labs
+This project contains the website for callaway labs, and provides detailed information about supplements and mixtures.

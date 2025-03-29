@@ -1,0 +1,22 @@
+{
+  "html.format.wrapLineLength": 100,
+  "html.customData": [
+    "cl-elements.html-data.json"
+  ],
+  "css.format.newlineBetweenRules": false,
+  "css.format.spaceAroundSelectorSeparator": true,
+  "css.format.maxPreserveNewLines": 2,
+  "json.format.keepLines": true,
+  "css.lint.boxModel": "warning",
+  "css.lint.compatibleVendorPrefixes": "warning",
+  "css.lint.duplicateProperties": "warning",
+  "css.lint.unknownVendorSpecificProperties": "warning",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "html.format.wrapAttributes": "preserve",
+  "html.format.preserveNewLines": false
+}
