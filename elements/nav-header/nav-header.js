@@ -1,4 +1,5 @@
 import * as Utils from '/common/utils.js'
+import * as Font from '/common/fontutils.js'
 
 export default class NavHeaderElement extends HTMLElement {
   constructor() {
@@ -34,8 +35,19 @@ export default class NavHeaderElement extends HTMLElement {
         });
 
         // import style sheet
-        const styleSheet = await Utils.fetchCss('/elements/nav-header/nav-header.css');
-        shadowRoot.adoptedStyleSheets.push(styleSheet);
+        shadowRoot.adoptedStyleSheets.push(
+          await Utils.fetchCss('/elements/nav-header/nav-header.css')
+        );
+
+        // wait for fonts
+        await Font.tryQuery(
+          'Roboto Flex',
+          { style: 'normal', weight: '100 1000', stretch: '25% 151%' }
+        ).load();
+        await Font.tryQuery(
+          'Font Awesome',
+          { style: 'normal', weight: '900' }
+        ).load();
 
         // append html
         shadowRoot.appendChild(htmlFrag);
