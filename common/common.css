@@ -6,7 +6,6 @@
   font-display: swap;
   src: url("/assets/roboto-flex/roboto-flex.woff2") format("woff2");
 }
-
 @font-face {
   font-family: 'Font Awesome';
   font-style: normal;
@@ -14,7 +13,6 @@
   font-display: block;
   src: url("/assets/fontawesome/fa-regular-400.woff2") format("woff2");
 }
-
 @font-face {
   font-family: 'Font Awesome';
   font-style: normal;
@@ -22,7 +20,6 @@
   font-display: block;
   src: url("/assets/fontawesome/fa-solid-900.woff2") format("woff2");
 }
-
 @font-face {
   font-family: 'Font Awesome Brands';
   font-style: normal;
@@ -32,27 +29,39 @@
 }
 
 body {
-  /* fonts */
-  font-family: 'Roboto Flex', sans-serif;
-  font-size: 16px;
-  font-optical-sizing: auto;
+  /* default font */
+  --default-font: normal 16px 'Roboto Flex', sans-serif;
+  /* icon font */
   --icon-font-regular: normal 400 1em/1 'Font Awesome';
   --icon-font-solid: normal 900 1em/1 'Font Awesome';
   --icon-font-brands: normal 400 1em/1 'Font Awesome Brands';
-  /* greyscale colors for generic text */
+  /* main palette in greyscale */
   --main-bg-color: #ffffff;
   --main-text-color: #242424;
   --main-border-color: #dbdbdb;
   --main-inset-color: #020202;
-  /* light fade for alternate background */
+  /* alternate palette */
   --alt-bg-color: #e6e6e6;
-  /* palette colors for highlights */
+  /* highlight palette */
   --highlight-button-color: #ff5500;
   --highlight-bg-color: #002347;
   --highlight-text-color: #ffffff;
-  /* set main colors */
+  /* default colors */
+  font: var(--default-font);
+  font-optical-sizing: auto;
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
+  margin: 8px;
+}
+
+.icon-regular {
+  font: var(--icon-font-regular);
+}
+.icon-solid {
+  font: var(--icon-font-solid);
+}
+.icon-brand {
+  font: var(--icon-font-brands);
 }
 
 a {

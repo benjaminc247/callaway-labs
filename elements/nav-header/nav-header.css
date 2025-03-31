@@ -13,6 +13,10 @@ button {
 button:focus {
   outline: revert;
 }
+/* top level */
+nav-header {
+  display: block;
+}
 /* page header */
 #page-header {
   display: flex;

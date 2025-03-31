@@ -66,18 +66,3 @@ export async function fetchCss(fileName) {
   styleSheet.replaceSync(responseText);
   return styleSheet;
 }
-
-/**
- * Query selector, throw on failure.
- * @param {ParentNode} parent - parent element for query
- * @param {string} parentId - parent id for error message
- * @param {string} selector - selector string
- * @returns {Element} - selected element
- * @throws {ElementRequiredError} - selector returned no results
- */
-export function tryQuerySelector(parent, parentId, selector) {
-  const element = parent.querySelector(selector);
-  if (!element)
-    throw new ElementRequiredError(parentId, selector);
-  return element;
-}

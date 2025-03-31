@@ -6,7 +6,7 @@
  */
 
 /**
- * Font required error from failed query.
+ * Font required error from failed find.
  */
 export class FontRequiredError extends Error {
   /**
@@ -29,7 +29,7 @@ export class FontRequiredError extends Error {
  * @returns {FontFace|undefined} - font face or undefined if not found
  * @throws {SyntaxError} - invalid family or descriptor string
  */
-export function query(family, desc = {}) {
+export function find(family, desc = {}) {
   // normalize family string and parse descriptors
   const loadFamily = normalizeFontFamily(family);
   const loadDesc = {};
@@ -84,18 +84,18 @@ export function query(family, desc = {}) {
 }
 
 /**
- * Query for existing font, throw on failure.
+ * Async find existing font and return load promise.
  * @param {string} family - font family name
  * @param {FontDescriptor} [desc] - font descriptors
- * @returns {FontFace} - font face
+ * @returns {Promise<FontFace>} - font face
  * @throws {SyntaxError} - invalid family or descriptor string
  * @throws {FontRequiredError} - font not found
  */
-export function tryQuery(family, desc = {}) {
-  const font = query(family, desc);
+export async function loadExisting(family, desc = {}) {
+  const font = find(family, desc);
   if (!font)
-    throw new Error(`required font '${font}' not found`);
-  return font;
+    throw new FontRequiredError(family, desc);
+  return font.load();
 }
 
 /**
@@ -107,7 +107,7 @@ export function tryQuery(family, desc = {}) {
  * @throws {SyntaxError} - descriptor mismatch, load failure, invalid family or descriptor string
  */
 export async function load(family, source, desc = {}) {
-  var font = query(family, desc);
+  var font = find(family, desc);
   if (!font) {
     font = new FontFace(family, source, {
       style: desc.style,
